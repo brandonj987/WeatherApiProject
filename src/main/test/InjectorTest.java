@@ -6,11 +6,8 @@ import com.sparta.weatherapiproject.jackson.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.stream.Stream;
 
 public class InjectorTest {
     private static final String TEST_URL = "";
@@ -22,17 +19,18 @@ public class InjectorTest {
     private static final int TEST_SYS_SUNRISE = 0;
     private static final int TEST_SYS_SUNSET = 0;
 
-    private WeatherInjector wi;
-    private String apiKey;
-    private String jsonString;
+    private static WeatherInjector wi;
+    private static String apiKey;
+    private static String jsonString;
 
     @BeforeAll
-    public void setUp() {
+    public static void setUp() {
         wi = new WeatherInjector();
         apiKey = ApiKeyGetter.getApiKey();
         jsonString = getJSONString();
     }
 
+    @Test
     @DisplayName("Given a JSON Object, the injector should be able to retrieve" +
             "the coordinates data and store it in a Coord object.")
     public void testgetCoordinates() throws JsonProcessingException {
@@ -41,6 +39,7 @@ public class InjectorTest {
         Assertions.assertEquals(coord.getLat(), TEST_COORD_LAT);
     }
 
+    @Test
     @DisplayName("Given a JSON Object, the injector should be able to retrieve" +
             "the wind data and store it in a Wind object.")
     public void testGetWind() throws JsonProcessingException {
@@ -50,6 +49,7 @@ public class InjectorTest {
         Assertions.assertEquals(wind.getSpeed(), TEST_WIND_SPEED);
     }
 
+    @Test
     @DisplayName("Given a JSON Object, the injector should be able to retrieve" +
             "the sun cycle data and store it in a Sys object.")
     public void testGetSunCycle() throws JsonProcessingException {
@@ -58,7 +58,7 @@ public class InjectorTest {
         Assertions.assertEquals(sys.getSunset(), TEST_SYS_SUNSET);
     }
 
-    private String getJSONString() {
+    private static String getJSONString() {
         String s = ConnectionManager.httpConnection(TEST_URL, apiKey);
         if(s != null) return s; // else
         ConnectionManager cm = Mockito.mock(ConnectionManager.class);
