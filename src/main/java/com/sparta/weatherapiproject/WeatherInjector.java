@@ -3,16 +3,20 @@ package com.sparta.weatherapiproject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.cucumber.gherkin.internal.com.eclipsesource.json.JsonObject;
-import io.cucumber.java.it.Ma;
+import com.sparta.weatherapiproject.jackson.*;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
 public class WeatherInjector {
 
+
+    public  CurrentWeatherData getCurrentWeatherData(String jsonString) throws JsonProcessingException {
+        ObjectMapper objMap = new ObjectMapper();
+        CurrentWeatherData currentWeatherData = objMap.readValue(jsonString, CurrentWeatherData.class);
+        return currentWeatherData;
+    }
     public CurrentWeatherData getCurrentWeatherData(double lat, double lon, String apiKey) throws IOException {
         ObjectMapper objMap = new ObjectMapper();
         String url = String.format("https://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&appid=%s", lat, lon, apiKey);
