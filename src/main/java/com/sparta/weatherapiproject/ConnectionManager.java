@@ -1,6 +1,8 @@
 package com.sparta.weatherapiproject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sparta.weatherapiproject.jackson.CurrentWeatherData;
+
 import java.io.IOException;
 import java.net.URL;
 
