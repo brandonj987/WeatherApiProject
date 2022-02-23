@@ -4,22 +4,29 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.weatherapiproject.jackson.CurrentWeatherData;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 public class ConnectionManager {
 
-    public static CurrentWeatherData currentWeatherDataConnection(String city, String apiKey){
-        CurrentWeatherData currentWeatherData = new CurrentWeatherData();
-        ObjectMapper objectMapper = new ObjectMapper();
+    public static String httpConnection(String url, String apiKey) {
+        HttpRequest request = HttpRequest
+                .newBuilder()
+                .uri(URI.create(url+apiKey))
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
         try {
-            currentWeatherData = objectMapper.readValue(
-                    new URL("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey),
-                    CurrentWeatherData.class);
-        } catch (IOException e) {
+            HttpResponse<String> response =
+                    httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            String responseBody = response.body();
+            return responseBody;
+
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+            return null;
         }
-        return currentWeatherData;
     }
-
-
 }
