@@ -59,10 +59,11 @@ public class InjectorTest {
     }
 
     private String getJSONString() {
-        String s = ConnectionManager.currentWeatherDataConnection(TEST_URL, apiKey);
+        String s = ConnectionManager.httpConnection(TEST_URL, apiKey);
         if(s != null) return s; // else
         ConnectionManager cm = Mockito.mock(ConnectionManager.class);
-        Mockito.when(cm.currentWeatherDataConnection(TEST_URL, apiKey)).thenReturn("test");
+        Mockito.when(cm.httpConnection(TEST_URL, apiKey)).thenReturn("test");
+        return cm.httpConnection(TEST_URL, apiKey);
     }
 
 }
