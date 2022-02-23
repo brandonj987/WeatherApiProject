@@ -1,6 +1,9 @@
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.sparta.weatherapiproject.Coord;
+import com.sparta.weatherapiproject.WeatherInjector;
+import com.sparta.weatherapiproject.ConnectionManager;
+import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -8,28 +11,30 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 public class InjectorTest {
-    private static final double TEST_COORDINATES_LON = 0;
-    private static final double TEST_COORDINATES_LAT = 0;
+    private static final String TEST_URL = "";
+    private static final String API_KEY = "";
+    private static final double TEST_COORD_LON = 0;
+    private static final double TEST_COORD_LAT = 0;
+
+    private WeatherInjector wi;
+
+    @Before
+    public void setUp() {
+        wi = new WeatherInjector();
+    }
 
     @ParameterizedTest
     @DisplayName("Given a JSON Object, the injector should be able to retrieve" +
             "the coordinates data and store it in a Coordinates object.")
-    @MethodSource("getJSONObject")
-    public static void testCoordinatesRetrieval(JSONObject jObj) {
-        Coordinates coordinates = Injector.getCoordinates(jObj);
-
+    @MethodSource("getJSONResponse")
+    public void testCoordinatesRetrieval(String js) throws JsonProcessingException {
+        Coord coord = wi.getCoordinates(js);
+        Assertions.assertEquals(coord.getLon(), TEST_COORD_LON);
+        Assertions.assertEquals(coord.getLat(), TEST_COORD_LAT);
     }
 
-    private static JSONObject getJSONObject() {
-        JSONObject jo = null;
-        JSONParser jp = new JSONParser();
-        try {
-            jo = (JSONObject) jp.parse("");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } finally {
-            return jo;
-        }
+    private String getJSONString() {
+        return ConnectionManager.currentWeatherDataConnection(TEST_URL, API_KEY);
     }
 
 }
