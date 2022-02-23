@@ -1,4 +1,4 @@
-package com.sparta.weatherapiproject;
+package com.sparta.weatherapiproject.jackson;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

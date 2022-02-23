@@ -3,11 +3,9 @@ package com.sparta.weatherapiproject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.cucumber.gherkin.internal.com.eclipsesource.json.JsonObject;
-import io.cucumber.java.it.Ma;
+import com.sparta.weatherapiproject.jackson.*;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
