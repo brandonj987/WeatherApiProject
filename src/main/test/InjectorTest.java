@@ -34,7 +34,9 @@ public class InjectorTest {
     }
 
     private String getJSONString() {
-        return ConnectionManager.currentWeatherDataConnection(TEST_URL, API_KEY);
+        String s = ConnectionManager.currentWeatherDataConnection(TEST_URL, API_KEY);
+        if(s != null) return s; // else
+        return null; // replace with mockito
     }
 
 }
