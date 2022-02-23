@@ -11,6 +11,12 @@ import java.util.List;
 
 public class WeatherInjector {
 
+
+    public  CurrentWeatherData getCurrentWeatherData(String jsonString) throws JsonProcessingException {
+        ObjectMapper objMap = new ObjectMapper();
+        CurrentWeatherData currentWeatherData = objMap.readValue(jsonString, CurrentWeatherData.class);
+        return currentWeatherData;
+    }
     public CurrentWeatherData getCurrentWeatherData(double lat, double lon, String apiKey) throws IOException {
         ObjectMapper objMap = new ObjectMapper();
         String url = String.format("https://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&appid=%s", lat, lon, apiKey);
