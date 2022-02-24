@@ -23,7 +23,8 @@
   "visibility": 16093,
   "wind": {
     "speed": 1.5,
-    "deg": 350
+    "deg": 350,
+    "gust": 1.9,
   },
   "rain": {
     "1h": 0.65,

@@ -41,7 +41,6 @@ public class WeatherInjector {
         return wind;
     }
 
-
     public Clouds getClouds(String jsonString) throws  JsonProcessingException{
         ObjectMapper objMap = new ObjectMapper();
         Clouds clouds = objMap.readValue(jsonString, Clouds.class);
