@@ -2,6 +2,7 @@ package com.spartaglobal.connectiontest;
 
 import com.sparta.weatherapiproject.ApiKeyGetter;
 import com.sparta.weatherapiproject.ConnectionManager;
+import com.sparta.weatherapiproject.UrlGenerator;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,10 +11,9 @@ import org.junit.jupiter.api.DisplayName;
 public class ConnectionManagerTest {
     @BeforeAll
     public String setUp(){
-        String url = "https://api.openweathermap.org/data/2.5/weather?q=london&appid=";
         String key = ApiKeyGetter.getApiKey();
-        String response = ConnectionManager.httpConnection(url, key);
-        return response;
+        String url = UrlGenerator.getURL("london", key);
+        return ConnectionManager.httpConnection(url);
     }
 
     @Test
