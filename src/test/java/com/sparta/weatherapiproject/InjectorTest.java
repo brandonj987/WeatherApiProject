@@ -1,13 +1,12 @@
 package com.sparta.weatherapiproject;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.sparta.weatherapiproject.ApiKeyGetter;
-import com.sparta.weatherapiproject.WeatherInjector;
 import com.sparta.weatherapiproject.jackson.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,7 +22,7 @@ public class InjectorTest {
     private static final String TEST_WEATHER_ICON = "01d";
     private static final String TEST_BASE = "stations";
     private static final double TEST_MAIN_TEMP = 282.55;
-    private static final double TEST_MAIN_FEELS_LIKE = 281.66;
+    private static final double TEST_MAIN_FEELS_LIKE = 281.86;
     private static final double TEST_MAIN_TEMP_MIN = 280.37;
     private static final double TEST_MAIN_TEMP_MAX = 284.26;
     private static final int TEST_MAIN_PRESSURE = 1023;
@@ -177,7 +176,10 @@ public class InjectorTest {
     }
 
     private static String getJSONString() throws IOException {
-        return new String(Files.readAllBytes(Paths.get(TEST_JSON_PATH)));
+        ConnectionManager cm = new ConnectionManager();
+        ConnectionManager cmSpy = Mockito.spy(cm);
+        Mockito.doReturn(new String(Files.readAllBytes(Paths.get(TEST_JSON_PATH)))).when(cmSpy).httpConnection(null);
+        return cmSpy.httpConnection(null);
     }
 
 }

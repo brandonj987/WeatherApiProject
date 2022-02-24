@@ -13,7 +13,7 @@ public class ConnectionManagerTest {
     public String setUp(){
         String key = ApiKeyGetter.getApiKey();
         String url = UrlGenerator.getURL("london", key);
-        return ConnectionManager.httpConnection(url);
+        return (new ConnectionManager()).httpConnection(url);
     }
 
     @Test
