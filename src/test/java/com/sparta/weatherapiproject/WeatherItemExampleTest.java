@@ -1,3 +1,5 @@
+package com.sparta.weatherapiproject;
+
 import com.sparta.weatherapiproject.ApiKeyGetter;
 import com.sparta.weatherapiproject.WeatherInjector;
 import com.sparta.weatherapiproject.jackson.WeatherItem;
