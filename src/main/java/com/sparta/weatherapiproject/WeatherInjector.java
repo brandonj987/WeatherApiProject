@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.weatherapiproject.jackson.*;
+import io.cucumber.java.it.Ma;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,6 +72,12 @@ public class WeatherInjector {
         return sunCycle;
     }
 
+
+    public Main getMain(String jsonString) throws JsonProcessingException {
+        ObjectMapper objMap = new ObjectMapper();
+        Main main = objMap.readValue(jsonString, Main.class);
+        return main;
+    }
 
 
 
