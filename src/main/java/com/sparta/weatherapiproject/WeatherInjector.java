@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.weatherapiproject.jackson.*;
+import io.cucumber.java.it.Ma;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,7 +13,7 @@ import java.util.List;
 public class WeatherInjector {
 
 
-    public  CurrentWeatherData getCurrentWeatherData(String jsonString) throws JsonProcessingException {
+    public CurrentWeatherData getCurrentWeatherData(String jsonString) throws JsonProcessingException {
         ObjectMapper objMap = new ObjectMapper();
         CurrentWeatherData currentWeatherData = objMap.readValue(jsonString, CurrentWeatherData.class);
         return currentWeatherData;
@@ -35,23 +36,47 @@ public class WeatherInjector {
         return weatherItemList;
     }
 
+    public WeatherItem getWeatherItem(String jsonString) throws JsonProcessingException{
+        ObjectMapper objMap = new ObjectMapper();
+        WeatherItem weatherItem = objMap.readValue(jsonString, WeatherItem.class);
+        return weatherItem;
+    }
+
     public Wind getWind(String jsonString) throws JsonProcessingException {
         ObjectMapper objMap = new ObjectMapper();
         Wind wind = objMap.readValue(jsonString, Wind.class);
         return wind;
     }
 
-
-    public Clouds getClouds(String jsonString) throws  JsonProcessingException{
+    public Clouds getClouds(String jsonString) throws JsonProcessingException{
         ObjectMapper objMap = new ObjectMapper();
         Clouds clouds = objMap.readValue(jsonString, Clouds.class);
         return clouds;
+    }
+
+    public Rain getRain(String jsonString) throws JsonProcessingException{
+        ObjectMapper objMap = new ObjectMapper();
+        Rain rain = objMap.readValue(jsonString, Rain.class);
+        return rain;
+    }
+
+    public Snow getSnow(String jsonString) throws JsonProcessingException{
+        ObjectMapper objMap = new ObjectMapper();
+        Snow snow = objMap.readValue(jsonString, Snow.class);
+        return snow;
     }
 
     public Sys getSunCycle(String jsonString) throws  JsonProcessingException{
         ObjectMapper objMap = new ObjectMapper();
         Sys sunCycle = objMap.readValue(jsonString, Sys.class);
         return sunCycle;
+    }
+
+
+    public Main getMain(String jsonString) throws JsonProcessingException {
+        ObjectMapper objMap = new ObjectMapper();
+        Main main = objMap.readValue(jsonString, Main.class);
+        return main;
     }
 
 
