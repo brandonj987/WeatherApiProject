@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CurrentWeatherData {
 
+	@JsonProperty("visibility")
+	private int visibility;
+
 	@JsonProperty("rain")
 	private Rain rain;
 
@@ -157,6 +160,14 @@ public class CurrentWeatherData {
 
 	public Wind getWind(){
 		return wind;
+	}
+
+	public void setVisibility(int visibility){
+		this.visibility = visibility;
+	}
+
+	public int getVisibility(){
+		return visibility;
 	}
 
 	@Override
