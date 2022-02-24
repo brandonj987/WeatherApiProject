@@ -8,10 +8,10 @@ import java.net.http.HttpResponse;
 
 public class ConnectionManager {
 
-    public static String httpConnection(String url, String apiKey) {
+    public static String httpConnection(String url) {
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(url+apiKey))
+                .uri(URI.create(url))
                 .build();
         HttpClient httpClient = HttpClient.newHttpClient();
         try {
