@@ -54,4 +54,31 @@ public class UrlGenerator {
         return stringbuilder.toString();
     }
 
+    public static String getURL(int cityID, String apiKey) {
+        StringBuilder stringbuilder = new StringBuilder();
+        stringbuilder.append(URL_START);
+        stringbuilder.append("id=");
+        stringbuilder.append(cityID);
+        stringbuilder.append("&appid=");
+        stringbuilder.append(apiKey);
+        return stringbuilder.toString();
+    }
+
+
+    public static String getURL(int zipCode,String countryCode, String apiKey) {
+        StringBuilder stringbuilder = new StringBuilder();
+        stringbuilder.append(URL_START);
+        stringbuilder.append("zip=");
+        stringbuilder.append(zipCode);
+        stringbuilder.append(",");
+        stringbuilder.append(countryCode);
+        stringbuilder.append("&appid=");
+        stringbuilder.append(apiKey);
+        return stringbuilder.toString();
+    }
+
+
+
+
+
 }
