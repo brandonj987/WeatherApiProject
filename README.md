@@ -26,6 +26,8 @@ This project will follow a Service Object Model:
 - Jackson
 - Git
 - Maven
+- Mockito
+- Cucumber
 
 ## GitHub Rules
 - **all code to be added to the main branch must be approved by all members of the group**
