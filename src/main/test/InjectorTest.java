@@ -82,10 +82,10 @@ public class InjectorTest {
         Assertions.assertEquals(TEST_WIND_DEG, wind.getDeg());
         Assertions.assertEquals(TEST_WIND_GUST, wind.getGust());
         Assertions.assertEquals(TEST_WIND_SPEED, wind.getSpeed());
-        Assertions.assertEquals(TEST_RAIN_1H, rain.get1h());
-        Assertions.assertEquals(TEST_RAIN_3H, rain.get3h());
-        Assertions.assertEquals(TEST_SNOW_1H, snow.get1h());
-        Assertions.assertEquals(TEST_SNOW_3H, snow.get3h());
+        Assertions.assertEquals(TEST_RAIN_1H, rain.getJsonMember1h());
+        Assertions.assertEquals(TEST_RAIN_3H, rain.getJsonMember3h());
+        Assertions.assertEquals(TEST_SNOW_1H, snow.getJsonMember1h());
+        Assertions.assertEquals(TEST_SNOW_3H, snow.getJsonMember3h());
         Assertions.assertEquals(TEST_CLOUDS_ALL, clouds.getAll());
         Assertions.assertEquals(TEST_DT, cwd.getDt());
         Assertions.assertEquals(TEST_SYS_SUNRISE, sys.getSunrise());
@@ -144,8 +144,8 @@ public class InjectorTest {
             "the rain data and store it in a Rain object.")
     public void testGetRain() throws JsonProcessingException {
         Rain rain = wi.getRain(jsonString);
-        Assertions.assertEquals(TEST_RAIN_1H, rain.get1h());
-        Assertions.assertEquals(TEST_RAIN_3H, rain.get3h());
+        Assertions.assertEquals(TEST_RAIN_1H, rain.getJsonMember1h());
+        Assertions.assertEquals(TEST_RAIN_3H, rain.getJsonMember3h());
     }
 
     @Test
@@ -153,8 +153,8 @@ public class InjectorTest {
             "the snow data and store it in a Snow object.")
     public void testGetSnow() throws JsonProcessingException {
         Snow snow = wi.getSnow(jsonString);
-        Assertions.assertEquals(TEST_SNOW_1H, snow.get1h());
-        Assertions.assertEquals(TEST_SNOW_3H, snow.get3h());
+        Assertions.assertEquals(TEST_SNOW_1H, snow.getJsonMember1h());
+        Assertions.assertEquals(TEST_SNOW_3H, snow.getJsonMember3h());
     }
 
     @Test
