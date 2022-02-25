@@ -49,4 +49,6 @@ public class WeatherItemExampleTest {
     public void theValueShouldBeEitherOr(String arg0, String arg1) {
         MatcherAssert.assertThat(icon, Matchers.oneOf(arg0, arg1));
     }
-}
+
+
+
