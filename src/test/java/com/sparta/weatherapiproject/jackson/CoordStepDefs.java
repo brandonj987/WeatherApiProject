@@ -5,13 +5,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
-public class DTOStepDefs {
+public class CoordStepDefs {
 
     private Coord coord;
     private double value;
 
     @Given("I have a Coords")
-    public void iHaveACoords() {
+    public void iHaveACoord() {
         coord = new Coord();
     }
 
@@ -25,8 +25,8 @@ public class DTOStepDefs {
         value = coord.getLon();
     }
 
-    @Then("the double value should be within the range of {int} and {int}")
-    public void theDoubleValueShouldBeWithinTheRangeOfAnd(int min, int max) {
+    @Then("the value should be within the range of {int} and {int}")
+    public void theValueShouldBeWithinTheRangeOfAnd(int min, int max) {
         Assertions.assertTrue(value >= min);
         Assertions.assertTrue(value <= max);
     }
