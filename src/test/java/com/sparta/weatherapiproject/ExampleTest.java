@@ -23,7 +23,7 @@ public class ExampleTest {
     @BeforeAll
     static void setUp() throws JsonProcessingException {
         String url = UrlGenerator.getURL("London", ApiKeyGetter.getApiKey());
-        dtoString = ConnectionManager.httpConnection(url);
+        dtoString = (new ConnectionManager()).httpConnection(url);
     }
 
     @Test
