@@ -25,3 +25,16 @@ Feature: WeatherItem
     Given I have a weather item
     When I get Icon
     Then The value should be a member of a weather items type name"
+
+  @DescriptionIconMatch
+  Scenario: The Description and Icon Matches
+    Given I have a weather item
+    When I get Icon
+    Then the value should be a suitable icon for the description
+
+  @IdMainMatch
+  Scenario: The Id and the main should match
+    Given I have a weather item
+    When I get the Id
+    Then The id should be correct based on the value in main
+

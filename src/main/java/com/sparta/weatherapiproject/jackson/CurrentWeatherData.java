@@ -12,7 +12,7 @@ public class CurrentWeatherData {
 	private Rain rain;
 
 	@JsonProperty("timezone")
-	private int timezone;
+	private Integer timezone;
 
 	@JsonProperty("main")
 	private Main main;
@@ -24,7 +24,7 @@ public class CurrentWeatherData {
 	private Sys sys;
 
 	@JsonProperty("dt")
-	private int dt;
+	private Integer dt;
 
 	@JsonProperty("coord")
 	private Coord coord;
@@ -39,16 +39,17 @@ public class CurrentWeatherData {
 	private String name;
 
 	@JsonProperty("cod")
-	private int cod;
+	private Integer cod;
 
 	@JsonProperty("id")
-	private int id;
+	private Integer id;
 
 	@JsonProperty("base")
 	private String base;
 
 	@JsonProperty("wind")
 	private Wind wind;
+
 
 	public void setRain(Rain rain){
 		this.rain = rain;
@@ -134,7 +135,7 @@ public class CurrentWeatherData {
 		this.cod = cod;
 	}
 
-	public int getCod(){
+	public Integer getCod(){
 		return cod;
 	}
 
@@ -142,7 +143,7 @@ public class CurrentWeatherData {
 		this.id = id;
 	}
 
-	public int getId(){
+	public Integer getId(){
 		return id;
 	}
 
@@ -166,7 +167,7 @@ public class CurrentWeatherData {
 		this.visibility = visibility;
 	}
 
-	public int getVisibility(){
+	public Integer getVisibility(){
 		return visibility;
 	}
 
