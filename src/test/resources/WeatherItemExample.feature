@@ -1,5 +1,5 @@
 Feature: WeatherItem
-  The Weather Item Object
+  The Weather Item Data
 
   @GetId
   Scenario Get Id
