@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class InjectorTest {
+
     private static final String TEST_JSON_PATH = "test.json";
     private static final double TEST_COORD_LON = -122.08;
     private static final double TEST_COORD_LAT = 37.39;
