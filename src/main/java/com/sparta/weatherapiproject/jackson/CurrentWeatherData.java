@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CurrentWeatherData {
 
 	@JsonProperty("visibility")
-	private int visibility;
+	private Integer visibility;
 
 	@JsonProperty("rain")
 	private Rain rain;
