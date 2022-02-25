@@ -1,19 +1,19 @@
 package com.sparta.weatherapiproject;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.sparta.weatherapiproject.ApiKeyGetter;
-import com.sparta.weatherapiproject.WeatherInjector;
 import com.sparta.weatherapiproject.jackson.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class InjectorTest {
+
     private static final String TEST_JSON_PATH = "test.json";
     private static final double TEST_COORD_LON = -122.08;
     private static final double TEST_COORD_LAT = 37.39;
@@ -101,7 +101,10 @@ public class InjectorTest {
 
 
     private static String getJSONString() throws IOException {
-        return new String(Files.readAllBytes(Paths.get(TEST_JSON_PATH)));
+        ConnectionManager cm = new ConnectionManager();
+        ConnectionManager cmSpy = Mockito.spy(cm);
+        Mockito.doReturn(new String(Files.readAllBytes(Paths.get(TEST_JSON_PATH)))).when(cmSpy).httpConnection(null);
+        return cmSpy.httpConnection(null);
     }
 
 }
