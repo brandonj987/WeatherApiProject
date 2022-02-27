@@ -7,9 +7,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -23,7 +29,7 @@ public class ExampleTest {
     @BeforeAll
     static void setUp() throws JsonProcessingException {
         String url = UrlGenerator.getURL("London", ApiKeyGetter.getApiKey());
-        dtoString = ConnectionManager.httpConnection(url);
+        dtoString = new ConnectionManager().httpConnection(url);
     }
 
     @Test
@@ -37,6 +43,13 @@ public class ExampleTest {
     public void coordLatIsExistTest() throws JsonProcessingException {
         weatherInjector = new WeatherInjector();
         assertThat(weatherInjector.getCurrentWeatherData(dtoString).getCoord().toString(),allOf(containsString("Coord"),containsString("lat")));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"coord","weather","base","main","dt","timezone","id","name","cod"})
+    public void checkMainFieldsIsExist(String name) throws JsonProcessingException {
+        weatherInjector = new WeatherInjector();
+        assertThat(weatherInjector.getCurrentWeatherData(dtoString).toString(),containsString(name));
     }
 
     @Test
@@ -244,6 +257,25 @@ public class ExampleTest {
         }
         Assertions.assertTrue(isValid);
     }
+
+
+    @ParameterizedTest
+    @MethodSource("checkLocationIsMatch")
+    public void checkSpartans(String stoString, String location) throws JsonProcessingException {
+        weatherInjector = new WeatherInjector();
+        Assertions.assertEquals(weatherInjector.getCurrentWeatherData(stoString).getName(), location);
+    }
+
+    private static Stream<Arguments> checkLocationIsMatch(){
+        return Stream.of(
+                Arguments.arguments(new ConnectionManager().httpConnection(UrlGenerator.getURL("London", ApiKeyGetter.getApiKey())), "London"),
+                Arguments.arguments(new ConnectionManager().httpConnection(UrlGenerator.getURL("Tokyo", ApiKeyGetter.getApiKey())), "Tokyo"),
+                Arguments.arguments(new ConnectionManager().httpConnection(UrlGenerator.getURL("Rome", ApiKeyGetter.getApiKey())), "Rome"),
+                Arguments.arguments(new ConnectionManager().httpConnection(UrlGenerator.getURL("Paris", ApiKeyGetter.getApiKey())), "Paris")
+
+        );
+    }
+
 
 }
 

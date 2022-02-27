@@ -5,19 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Wind{
 
 	@JsonProperty("deg")
-	private int deg;
+	private Integer deg;
 
 	@JsonProperty("speed")
-	private double speed;
+	private Double speed;
 
 	@JsonProperty("gust")
-	private double gust;
+	private Double gust;
 
 	public void setDeg(int deg){
 		this.deg = deg;
 	}
 
-	public int getDeg(){
+	public Integer getDeg(){
 		return deg;
 	}
 
@@ -25,7 +25,7 @@ public class Wind{
 		this.speed = speed;
 	}
 
-	public double getSpeed(){
+	public Double getSpeed(){
 		return speed;
 	}
 
@@ -33,7 +33,7 @@ public class Wind{
 		this.gust = gust;
 	}
 
-	public double getGust(){
+	public Double getGust(){
 		return gust;
 	}
 

@@ -15,7 +15,7 @@ This project will follow a Service Object Model:
 
 ## The Team
 - Brandon Johnson - Testing
-- Autumn Peles- Testing
+- Autumn Pelešová- Testing
 - Ben Wong - Development
 - Antony Ademefun - Development
 - Natasha Reilly - Scrum Master
