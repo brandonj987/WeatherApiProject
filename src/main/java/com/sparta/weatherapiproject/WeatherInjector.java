@@ -1,14 +1,12 @@
 package com.sparta.weatherapiproject;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.weatherapiproject.jackson.*;
-import io.cucumber.java.it.Ma;
+import com.sparta.weatherapiproject.jacksonclasses.CurrentWeatherData;
+import com.sparta.weatherapiproject.stepdefs.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
 public class WeatherInjector {
 
