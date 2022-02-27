@@ -55,19 +55,4 @@ public class ConnectionManagerTest {
         Assertions.assertEquals(expected, actual);
 
     }
-//
-//    @Test
-//    @DisplayName("Test the connection manager returns a String")
-//    public void testConnectionManagerReturnsString() {
-//        String response = setUp();
-//    }
-//
-//    @Test
-//    @DisplayName("Test the connection manager returns a String")
-//    public void testConnectionManagerReturnsString() {
-//        String response = setUp();
-//    }
-//
-//
-
 }
